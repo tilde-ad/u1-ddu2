@@ -26,23 +26,27 @@ for (i = 0; i <= 38; i++) {
         document.getElementById(i).style.color = "white"
         cityName.textContent = cities[i].name + " " + "(" + cities[i].country + ")";
         foundCity = true;
+        title.textContent = cities[i].name;
     }
 }
 if (foundCity != true) {
     cityName.textContent = whatCity + " finns inte i databasen";
     info.textContent = "";
+    title.textContent = "Not Found";
 }
+
 for (i = 0; i <= 38; i++) {
     let div = document.createElement("div");
     table.append(div);
     div.setAttribute("class", "head_column")
     div.setAttribute("class", "cell")
     div.textContent = cities[i].id + "-" + cities[i].name;
-}
-for (i = 0; i <= 38; i++) {
-    let div = document.createElement("div");
-    table.append(div);
-    div.setAttribute("class", "head_row")
-    div.setAttribute("class", "cell")
-    div.textContent = cities[i].id;
+
+    for (j = 0; j <= 38; j++) {
+        let div = document.createElement("div");
+        table.append(div);
+        div.setAttribute("class", "head_row")
+        div.setAttribute("class", "cell")
+        div.textContent = cities[i].id;
+    }
 }
