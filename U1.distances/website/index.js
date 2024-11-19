@@ -15,6 +15,8 @@ let foundCity = false;
 let id;
 let furthest = distances[0].distance;
 let closest = distances[0].distance;
+let furthestId;
+let closestId;
 
 for (i = 0; i <= 38; i++) {
     let div = document.createElement("div");
@@ -39,18 +41,33 @@ for (const x of distances) {
     if (id === x.city1 || id === x.city2) {
         if (x.distance > furthest) {
             furthest = x.distance;
+            if (id === x.city1) {
+                furthestId = x.city2;
+            }
+            else {
+                furthestId = x.city1;
+            }
+
         }
         if (x.distance < closest) {
             closest = x.distance;
+            if (id === x.city1) {
+                closestId = x.city2;
+            }
+            else {
+                closestId = x.city1;
+            }
         }
     }
 }
-console.log(furthest, closest)
+console.log(furthestId, closestId);
+
 if (foundCity != true) {
     cityName.textContent = whatCity + " finns inte i databasen";
     info.textContent = "";
     title.textContent = "Not Found";
 }
+
 
 for (i = 0; i <= 38; i++) {
     let div = document.createElement("div");
