@@ -12,6 +12,9 @@ const table = document.querySelector("#table");
 const city = document.querySelector("#cities");
 const info = document.querySelector("h3");
 let foundCity = false;
+let id;
+let furthest = distances[0].distance;
+let closest = distances[0].distance;
 
 for (i = 0; i <= 38; i++) {
     let div = document.createElement("div");
@@ -20,6 +23,7 @@ for (i = 0; i <= 38; i++) {
     div.setAttribute("id", i);
     div.textContent = cities[i].name;
 }
+
 for (i = 0; i <= 38; i++) {
     if (whatCity == cities[i].name) {
         document.getElementById(i).style.backgroundColor = "black";
@@ -27,8 +31,21 @@ for (i = 0; i <= 38; i++) {
         cityName.textContent = cities[i].name + " " + "(" + cities[i].country + ")";
         foundCity = true;
         title.textContent = cities[i].name;
+        id = i;
+
     }
 }
+for (const x of distances) {
+    if (id === x.city1 || id === x.city2) {
+        if (x.distance > furthest) {
+            furthest = x.distance;
+        }
+        if (x.distance < closest) {
+            closest = x.distance;
+        }
+    }
+}
+console.log(furthest, closest)
 if (foundCity != true) {
     cityName.textContent = whatCity + " finns inte i databasen";
     info.textContent = "";
