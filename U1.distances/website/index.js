@@ -11,12 +11,16 @@ const cityName = document.querySelector("h2");
 const table = document.querySelector("#table");
 const city = document.querySelector("#cities");
 const info = document.querySelector("h3");
+const spanClosest = document.getElementById("closest");
+const spanFurthest = document.getElementById("furthest");
 let foundCity = false;
 let id;
 let furthest = distances[0].distance;
 let closest = distances[0].distance;
 let furthestId;
 let closestId;
+let furthestName;
+let closestName;
 
 for (i = 0; i <= 38; i++) {
     let div = document.createElement("div");
@@ -68,6 +72,41 @@ if (foundCity != true) {
     title.textContent = "Not Found";
 }
 
+else {
+    for (const x of distances) {
+        if (id === x.city1 || id === x.city2) {
+            if (x.distance > furthest) {
+                furthest = x.distance;
+                if (id === x.city1) {
+                    furthestId = x.city2;
+                }
+                else {
+                    furthestId = x.city1;
+                }
+
+            }
+            if (x.distance < closest) {
+                closest = x.distance;
+                if (id === x.city1) {
+                    closestId = x.city2;
+                }
+                else {
+                    closestId = x.city1;
+                }
+            }
+        }
+        for (const x of cities) {
+            if (closestId == x.id) {
+                closestName = x.name;
+            }
+            if (furthestId == x.id) {
+                furthestName = x.name;
+            }
+        }
+    }
+    spanClosest.textContent = closestName;
+    spanFurthest.textContent = furthestName;
+}
 
 for (i = 0; i <= 38; i++) {
     let div = document.createElement("div");
