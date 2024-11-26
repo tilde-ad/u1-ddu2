@@ -29,14 +29,14 @@ let whatCity = prompt("Vilken stad?");
 for (i = 0; i <= 38; i++) {
     let div = document.createElement("div");
     city.append(div);
-    div.setAttribute("class", "cityBox")
+    div.setAttribute("class", "cityBox");
     div.setAttribute("id", i);
     div.textContent = cities[i].name;
 }
 
 for (i = 0; i <= 38; i++) {
     if (whatCity == cities[i].name) {
-        document.getElementById(i).classList.add("target")
+        document.getElementById(i).classList.add("target");
         cityName.textContent = cities[i].name + " " + "(" + cities[i].country + ")";
         foundCity = true;
         title.textContent = cities[i].name;
@@ -89,9 +89,9 @@ else {
     closest = closest / 10;
     furthest = furthest / 10;
     document.getElementById(closestId).textContent = closestName + " ligger " + closest + " mil bort "
-    document.getElementById(closestId).classList.add("closest")
+    document.getElementById(closestId).classList.add("closest");
     document.getElementById(furthestId).textContent = furthestName + " ligger " + furthest + " mil bort "
-    document.getElementById(furthestId).classList.add("furthest")
+    document.getElementById(furthestId).classList.add("furthest");
 }
 
 let divcreateFirstGrid = document.createElement("div");
