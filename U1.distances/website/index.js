@@ -1,10 +1,3 @@
-// Recommended: All functions declared here
-
-// Recommended: constants with references to existing HTML-elements
-
-// Recommended: Ask for the city name and then the rest of the code
-
-let whatCity = prompt("Vilken stad?");
 function getDistance(cityId1, cityId2) {
     for (let space of distances) {
         if ((space.city1 === cityId1 && space.city2 === cityId2) ||
@@ -21,6 +14,7 @@ const city = document.querySelector("#cities");
 const info = document.querySelector("h3");
 const spanClosest = document.getElementById("closest");
 const spanFurthest = document.getElementById("furthest");
+
 let foundCity = false;
 let id;
 let furthest = distances[0].distance;
@@ -29,6 +23,8 @@ let furthestId;
 let closestId;
 let furthestName;
 let closestName;
+
+let whatCity = prompt("Vilken stad?");
 
 for (i = 0; i <= 38; i++) {
     let div = document.createElement("div");
