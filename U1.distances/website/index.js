@@ -40,8 +40,7 @@ for (i = 0; i <= 38; i++) {
 
 for (i = 0; i <= 38; i++) {
     if (whatCity == cities[i].name) {
-        document.getElementById(i).style.backgroundColor = "black";
-        document.getElementById(i).style.color = "white"
+        document.getElementById(i).classList.add("target")
         cityName.textContent = cities[i].name + " " + "(" + cities[i].country + ")";
         foundCity = true;
         title.textContent = cities[i].name;
@@ -75,6 +74,7 @@ else {
                     closestId = sameid.city2;
                 }
                 else {
+                    closestId = sameid.city1;
                 }
             }
         }
@@ -89,6 +89,13 @@ else {
     }
     spanClosest.textContent = closestName;
     spanFurthest.textContent = furthestName;
+
+    closest = closest / 10;
+    furthest = furthest / 10;
+    document.getElementById(closestId).textContent = closestName + " ligger " + closest + " mil bort "
+    document.getElementById(closestId).classList.add("closest")
+    document.getElementById(furthestId).textContent = furthestName + " ligger " + furthest + " mil bort "
+    document.getElementById(furthestId).classList.add("furthest")
 }
 
 let divcreateFirstGrid = document.createElement("div");
