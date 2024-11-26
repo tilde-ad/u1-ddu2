@@ -108,18 +108,33 @@ else {
     spanFurthest.textContent = furthestName;
 }
 
-for (i = 0; i <= 38; i++) {
-    let div = document.createElement("div");
-    table.append(div);
-    div.setAttribute("class", "head_column")
-    div.setAttribute("class", "cell")
-    div.textContent = cities[i].id + "-" + cities[i].name;
+let divcreateFirstGrid = document.createElement("div");
+table.appendChild(divcreateFirstGrid);
+let emptyCol = document.createElement("div");
+emptyCol.classList.add("cell");
+emptyCol.textContent = " ";
+emptyCol.style.height = "20px";
+divcreateFirstGrid.append(emptyCol);
 
-    for (j = 0; j <= 38; j++) {
-        let div = document.createElement("div");
-        table.append(div);
-        div.setAttribute("class", "head_row")
-        div.setAttribute("class", "cell")
-        div.textContent = cities[i].id;
+for (let city of cities) {
+    let divcreate = document.createElement("div");
+    table.appendChild(divcreate);
+    divcreate.textContent = city.id;
+    divcreate.classList.add("cell");
+    divcreate.classList.add("head_row");
+
+}
+for (let i = 0; i < cities.length; i++) {
+    let city = cities[i];
+    let divcreate = document.createElement("div");
+    table.appendChild(divcreate);
+    divcreate.textContent = city.id + "-" + city.name;
+    divcreate.classList.add("cell");
+    divcreate.classList.add("head_column");
+
+    if (i % 2 === 0) {
+        divcreate.classList.add("even_row");
+    }
+
     }
 }
